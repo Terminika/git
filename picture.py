@@ -26,6 +26,8 @@ line(screen, 'black', (790, 280), (600, 450))
 line(screen, 'black', (810, 280), (920, 380))
 line(screen, 'black', (920, 380), (1010, 280))
 
+
+# heart
 line(screen, 'black', (1000, 320), (1060, 200))
 polygon(screen, 'red', [(1060, 200), (1100, 150), (1060, 145)])
 circle(screen, 'red', (1070, 145), 15)
