@@ -9,6 +9,28 @@ screen = pygame.display.set_mode((600, 780))
 rect(screen, (135, 206, 235), (0, 0, 600, 780))
 
 
+def main():
+    """
+    Вызывает фунцию рисования картинки
+    :return:
+    """
+    draw_picture()
+
+
+def draw_picture():
+    """
+    Вызывает функции, необходимые для рисования картинки.
+    :return:
+    """
+    mountains()
+    grass()
+    kust(400, 505, 3)
+    kust(500, 700, 2)
+    koza(200, 500, 6)
+    koza(100, 500, 5)
+    kust(150, 700, 4)
+
+    
 def mountains():
     """
     Рисует горы.
@@ -112,28 +134,6 @@ def koza(x, y, size):
     ellipse(screen, (255, 255, 255), (x + size * 4, y + size * 26, size * 5, size * 4))
     ellipse(screen, (255, 255, 255), (x - size, y + size * 25, size * 5, size * 4))
     ellipse(screen, (255, 255, 255), (x + size * 14, y + size * 25, size * 5, size * 4))
-
-
-def draw_picture():
-    """
-    Вызывает функции, необходимые для рисования картинки.
-    :return:
-    """
-    mountains()
-    grass()
-    kust(400, 505, 3)
-    kust(500, 700, 2)
-    koza(200, 500, 6)
-    koza(100, 500, 5)
-    kust(150, 700, 4)
-
-
-def main():
-    """
-    Вызывает фунцию рисования картинки
-    :return:
-    """
-    draw_picture()
 
 
 main()

@@ -2,19 +2,21 @@ import pygame
 from pygame.draw import *
 screen = pygame.display.set_mode((1600, 800))
 
+x = 130
+y = 250
 rect(screen, '#afdafc', (0, 0, 1600, 400))
 rect(screen, '#30ba8f', (0, 400, 1600, 800))
 # boy
-ellipse(screen, '#baacc7', (130, 250, 140, 350))
-circle(screen, '#dcdcdc', (200, 200), 70)
+ellipse(screen, '#baacc7', (x, y, 140, 350))
+circle(screen, '#dcdcdc', (x + 70, y - 50), 70)
 # hands
-line(screen, 'black', (160, 280), (80, 450))
-line(screen, 'black', (240, 280), (400, 450))
+line(screen, 'black', (x + 30, y + 30), (x - 50, y + 200))
+line(screen, 'black', (x + 110, y + 30), (x + 270, y + 200))
 # legs
-line(screen, 'black', (160, 570), (100, 730))
-line(screen, 'black', (100, 730), (70, 730))
-line(screen, 'black', (240, 570), (300, 730))
-line(screen, 'black', (300, 730), (330, 730))
+line(screen, 'black', (x + 30, 570), (x - 30, 730))
+line(screen, 'black', (x - 30, 730), (x - 30 - 30, 730))
+line(screen, 'black', (x + 110, 570), (x + 170, 730))
+line(screen, 'black', (x + 170, 730), (x + 200, 730))
 
 # heart
 line(screen, 'black', (80, 460), (80, 200))
@@ -49,12 +51,15 @@ line(screen, 'black', (880, 730), (860, 730))
 line(screen, 'black', (1040, 600), (1120, 730))
 line(screen, 'black', (1120, 730), (1140, 730))
 
+x1 = 800
+y1 = 280
+size = 25
 # ice cream
-line(screen, 'black', (800, 300), (800, 200))
-polygon(screen, 'yellow', [(800, 460 - 250), (750, 360 - 250), (850, 360 - 250)])
-circle(screen, 'red', (825, 340 - 250), 25)
-circle(screen, 'brown', (775, 340 - 250), 25)
-circle(screen, 'white', (800, 300 - 250), 25)
+line(screen, 'black', (x1, y1), (x1, y1 - 100))
+polygon(screen, 'yellow', [(x1, y1 - 90), (x1 - 50, y1 - 190), (x1 + 50, y1 - 190)])
+circle(screen, 'red', (x1 + 25, y1 - 200), size)
+circle(screen, 'brown', (x1 - 25, y1 - 200), size)
+circle(screen, 'white', (x1, y1 - 240), size)
 
 
 # boy2
