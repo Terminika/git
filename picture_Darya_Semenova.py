@@ -30,7 +30,7 @@ def draw_picture():
     koza(100, 500, 5)
     kust(150, 700, 4)
 
-    
+
 def mountains():
     """
     Рисует горы.
