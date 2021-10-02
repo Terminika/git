@@ -22,8 +22,8 @@ def main():
     triugolniy_animation(x_girl_1, y_girl_1, True, x_girl_2, y_girl_2, False)
     girls = True
     ovalniy_man_animation(x_man_1, y_man_1, True, x_man_2, y_man_2, False)
+    arm_animation(x_man_1, y_man_1, True)
     boys = True
-    arm_animation(x_man_1, y_man_1, True, 0)
     heart_mashtab(x_h, y_h, 0)
     other = True
     fon()
@@ -36,8 +36,8 @@ def fon():
     rect(screen, '#30ba8f', (0, 400, 1600, 800))
 
     if boys:
-        ovalniy_man(x_man_1, y_man_1, True, 0)
-        ovalniy_man(x_man_2, y_man_2, False, 0)
+        ovalniy_man(x_man_1, y_man_1, True, 0, 0)
+        ovalniy_man(x_man_2, y_man_2, False, 0, 0)
     if girls:
         triugolniy_man(x_girl_1, y_girl_1, True)
         triugolniy_man(x_girl_2, y_girl_2, False)
@@ -65,37 +65,39 @@ def ovalniy_man_animation(x1, y1, side1, x2, y2, side2):
         y2 = y2 - 10
         if y2 < -450:
             y2 = 1200
-        ovalniy_man(x1, y1, side1, 0)
-        ovalniy_man(x2, y2, side2, 0)
+        ovalniy_man(x1, y1, side1, 0, 0)
+        ovalniy_man(x2, y2, side2, 0, 0)
         pygame.display.update()
         clock.tick(50)
         fon()
 
 
-def arm_animation(x, y, side, rotate):
-    step = 1
+def arm_animation(x, y, side):
+    step = 4
+    rotate_x, rotate_y = 0, 0
     for i in range(100):
-        if rotate > 20 or rotate < -20:
+        if rotate_x > 80 or rotate_x < -20:
             step *= -1
-        rotate += step
-        ovalniy_man(x, y, side, rotate)
+        rotate_x += step
+        rotate_y -= step
+        ovalniy_man(x, y, side, rotate_x, rotate_y)
         pygame.display.update()
         clock.tick(50)
         fon()
 
 
-def ovalniy_man(x, y, side, rotate):
+def ovalniy_man(x, y, side, rotate_x, rotate_y):
     """Рисует овального человека по заданным координатам. Если переменная side == False, отразит его по вертикали. """
 
     ellipse(screen, '#baacc7', (x, y, 140, 350))
     circle(screen, '#dcdcdc', (x + 70, y - 50), 70)
     if side:
-        if not rotate:
+        if not rotate_x and not rotate_y:
             line(screen, 'black', (x + 30, y + 30), (x - 50, y + 200))
             line(screen, 'black', (x + 110, y + 30), (x + 270, y + 200))
         else:
             line(screen, 'black', (x + 30, y + 30), (x - 50, y + 200))
-            line(screen, 'black', (x + 110, y + 30), (x + rotate * 3 + 270, y + rotate * 7 + 200))
+            line(screen, 'black', (x + 110, y + 30), (x + rotate_x + 270, y + rotate_y + 200))
     else:
         line(screen, 'black', (x + 110, y + 30), (x + 180, y + 200))
         line(screen, 'black', (x + 30, y + 30), (x - 70, y + 200))
