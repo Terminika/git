@@ -58,7 +58,7 @@ def ovalniy_man_animation(x1, y1, side1, x2, y2, side2):
     :param side2: местоположение второго
     :return: None
     """
-    for j in range(150):
+    for j in range(300):
         y1 = (y1 + 10)
         if y1 > 850:
             y1 = -800
@@ -68,7 +68,7 @@ def ovalniy_man_animation(x1, y1, side1, x2, y2, side2):
         ovalniy_man(x1, y1, side1, 0, 0)
         ovalniy_man(x2, y2, side2, 0, 0)
         pygame.display.update()
-        clock.tick(50)
+        clock.tick(100)
         fon()
 
 
