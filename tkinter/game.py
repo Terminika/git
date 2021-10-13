@@ -3,13 +3,12 @@ from random import randrange as rnd, choice
 import time
 
 root = Tk()
-root.geometry('800x600')
+root.geometry('800x625')
 
 canv = Canvas(root, bg='white')
 canv.pack(fill=BOTH, expand=1)
 score = 0
 objects = []
-canv.create_text(800, 100, text=f'Score:{score}', anchor=W)
 canv.pack(fill=BOTH, expand=1)
 l = Label(root, bg='black', fg='white', text=f'Score:{score}', width=20)
 l.pack()
@@ -43,7 +42,7 @@ def all_balls():
             objects.pop(i)
             objects.insert(i, (x, y, r, direction, color))
             canv.create_oval(x - r, y - r, x + r, y + r, fill=color)
-    root.after(100, all_balls)
+    root.after(50, all_balls)
 
 
 def new_ball():
