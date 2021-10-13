@@ -18,11 +18,22 @@ l.pack()
 colors = ['red', 'orange', 'yellow', 'blue', 'green', 'black']
 
 
+def main():
+    """
+    Главная функция программы. Запускает процесс игры.
+    :return:
+    """
+    all_balls()
+
+
 def all_balls():
+    """
+    Регулирует количество шариков и орисовывает все шарики.
+    :return:
+    """
     canv.delete(ALL)
     if len(objects) < 10:
         objects.append(new_ball())
-        print('all new')
     else:
         for i in range(len(objects)):
             r = objects[i][2]
@@ -35,7 +46,29 @@ def all_balls():
     root.after(100, all_balls)
 
 
+def new_ball():
+    """
+    Создает новый шарик
+    :return: возвращает парамтры шарика: абсцисса,
+     ордината, радиус, направление движения и цвет
+    """
+    x = rnd(100, 700)
+    y = rnd(100, 500)
+    r = rnd(30, 50)
+    color = choice(colors)
+    direction = rnd(1, 4)
+    return x, y, r, direction, color
+
+
 def move(x, y, r, direction):
+    """
+    Вычисляет координаты шарика после единичного передвижения.
+    :param x: абсцисса шарика
+    :param y: ордината шарика
+    :param r: радиус шарика
+    :param direction: направление движения шарика
+    :return: новые координаты и новое направление движения.
+    """
     if direction == 1:
         if y - r <= 0 and x + r >= 800:
             direction = 3
@@ -80,17 +113,14 @@ def move(x, y, r, direction):
     return x, y, direction
 
 
-def new_ball():
-    """Функция создания нового шарика"""
-    x = rnd(100, 700)
-    y = rnd(100, 500)
-    r = rnd(30, 50)
-    color = choice(colors)
-    direction = rnd(1, 4)
-    return x, y, r, direction, color
-
-
 def click(event):
+    """
+    обрабаывает событие клика мышки.
+    В случае попадания по шарику удаляет его и увеличивает счет.
+    Если шарик оказался бомбой, счет обнуляется, шарики создаются заново.
+    :param event: событие клика мышки
+    :return:
+    """
     global score, objects
     x1, y1 = event.x, event.y
     i = 0
@@ -110,6 +140,7 @@ def click(event):
     l.config(text=f'Score:{score}')
     l.pack()
 
-all_balls()
+
+main()
 canv.bind('<Button-1>', click)
 root.mainloop()
